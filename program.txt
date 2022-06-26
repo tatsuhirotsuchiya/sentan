@@ -1,0 +1,23 @@
+(declare-const a0 Int)
+(declare-const b0 Int)
+(declare-const x0 Int)
+(declare-const x1 Int)
+(declare-const y0 Int)
+(declare-const y1 Int)
+(assert (and (= x0 1) (= y0 0)))
+(assert 
+　(or
+　	(and (not (= a0 0)) (= y1 (+ x0 3)))
+　	(and (= a0 0) (= y1 y0))
+　)
+)
+(assert 
+　(or
+　	(and (not (= a0 0)) (= b0 0) (= x1 (* 2 (+ a0 b0))))
+　	(and (not (and (not (= a0 0)) (= b0 0))) (= x1 x0))
+　)
+)
+(assert (!= x1 y1))
+(check-sat)
+(get-model)
+

@@ -1,0 +1,57 @@
+; ;の後はコメント
+; 魔方陣
+
+; 変数を宣言
+(declare-const a Int)
+(declare-const b Int)
+(declare-const c Int)
+(declare-const d Int)
+(declare-const e Int)
+(declare-const f Int)
+(declare-const g Int)
+(declare-const h Int)
+(declare-const i Int)
+
+; 制約を表現
+
+; 範囲
+; (assert (and (> a 0) (< a 10)))
+; (assert (and (> b 0) (< b 10)))
+; (assert (and (> c 0) (< c 10)))
+; (assert (and (> d 0) (< d 10)))
+; (assert (and (> e 0) (< e 10)))
+; (assert (and (> f 0) (< f 10)))
+; (assert (and (> g 0) (< g 10)))
+; (assert (and (> h 0) (< h 10)))
+; (assert (and (> i 0) (< i 10)))
+
+; マスはすべて異なる-> 1から9まで現れる
+(assert (or (= a 1) (= b 1) (= c 1) (= d 1) (= e 1) (= f 1) (= g 1) (= h 1) (= i 1)))
+(assert (or (= a 2) (= b 2) (= c 2) (= d 2) (= e 2) (= f 2) (= g 2) (= h 2) (= i 2)))
+(assert (or (= a 3) (= b 3) (= c 3) (= d 3) (= e 3) (= f 3) (= g 3) (= h 3) (= i 3)))
+(assert (or (= a 4) (= b 4) (= c 4) (= d 4) (= e 4) (= f 4) (= g 4) (= h 4) (= i 4)))
+(assert (or (= a 5) (= b 5) (= c 5) (= d 5) (= e 5) (= f 5) (= g 5) (= h 5) (= i 5)))
+(assert (or (= a 6) (= b 6) (= c 6) (= d 6) (= e 6) (= f 6) (= g 6) (= h 6) (= i 6)))
+(assert (or (= a 7) (= b 7) (= c 7) (= d 7) (= e 7) (= f 7) (= g 7) (= h 7) (= i 7)))
+(assert (or (= a 8) (= b 8) (= c 8) (= d 8) (= e 8) (= f 8) (= g 8) (= h 8) (= i 8)))
+(assert (or (= a 9) (= b 9) (= c 9) (= d 9) (= e 9) (= f 9) (= g 9) (= h 9) (= i 9)))
+
+
+; 1行目の値の和をsumに設定
+(declare-const sum Int)
+
+; 行例の値がすべてsumに一致
+(assert (= (+ a b c) sum))
+(assert (= (+ d e f) sum))
+(assert (= (+ g h i) sum))
+
+(assert (= (+ a d g) sum))
+(assert (= (+ b e h) sum))
+(assert (= (+ c f i) sum))
+
+
+; 解があるかしらべる
+(check-sat)
+
+; 解を表示
+(get-model)
